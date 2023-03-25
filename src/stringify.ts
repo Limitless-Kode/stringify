@@ -58,14 +58,14 @@ export default class Stringify extends Ncrypt {
    * const encrypted = Stringify.toEncryptedString(plaintext);
    * console.log(encrypted); // Encrypted string
    */
-  static toEncryptedString(value: any) {
-    try {
-      const stringify = new Stringify();
-      return stringify.encrypt(JSON.stringify(value));
-    } catch (error) {
-      throw error;
-    }
-  }
+  // static toEncryptedString(value: any) {
+  //   try {
+  //     const stringify = new Stringify();
+  //     return stringify.encrypt(JSON.stringify(value));
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 
   /**
    * Decrypts an encrypted string to plain text using the encryption key
@@ -76,14 +76,14 @@ export default class Stringify extends Ncrypt {
    * const plaintext = Stringify.toDecryptedString(encrypted);
    * console.log(plaintext); // 'my secret message'
    */
-  static toDecryptedString(value: string) {
-    try {
-      const stringify = new Stringify();
-      return JSON.parse(stringify.decrypt(value));
-    } catch (error) {
-      throw error;
-    }
-  }
+  // static toDecryptedString(value: string) {
+  //   try {
+  //     const stringify = new Stringify();
+  //     return JSON.parse(stringify.decrypt(value));
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 
   /**
    * Decrypts an encrypted string to a JSON object using the encryption key
@@ -94,14 +94,14 @@ export default class Stringify extends Ncrypt {
    * const jsonObject = Stringify.toDecryptedJSON(encrypted);
    * console.log(jsonObject); // Decrypted JSON object
    */
-  static toDecryptedJSON(value: string) {
-    try {
-      const stringify = new Stringify();
-      return JSON.parse(stringify.decrypt(value));
-    } catch (error: any) {
-      throw error;
-    }
-  }
+  // static toDecryptedJSON(value: string) {
+  //   try {
+  //     const stringify = new Stringify();
+  //     return JSON.parse(stringify.decrypt(value));
+  //   } catch (error: any) {
+  //     throw error;
+  //   }
+  // }
 
   // =====================================================================
   // Case conversion

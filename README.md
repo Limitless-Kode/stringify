@@ -1,5 +1,6 @@
 # Stringify
 
+
 Stringify provides a set of methods for working with JSON strings and objects, case conversion, as well as encryption and decryption capabilities. It extends the Ncrypt class for encryption and decryption, and also allows you to convert JSON strings to JSON objects, and vice versa.
 
 In this library, you'll find a variety of string conversion methods such as converting strings to camel case, snake case, kebab case, and sentence case. You can also encrypt and decrypt strings using the encryption key provided or via the .env file.
