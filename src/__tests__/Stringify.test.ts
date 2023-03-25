@@ -23,27 +23,27 @@ describe('Stringify', () => {
         });
     });
 
-    describe('toEncryptedString and toDecryptedString', () => {
-        test('encrypts and decrypts a string', () => {
-            const plaintext = 'my secret message';
-            const encrypted = Stringify.toEncryptedString(plaintext);
-            const decrypted = Stringify.toDecryptedString(encrypted);
-            expect(decrypted).toEqual(plaintext);
-        });
+    // describe('toEncryptedString and toDecryptedString', () => {
+    //     test('encrypts and decrypts a string', () => {
+    //         const plaintext = 'my secret message';
+    //         const encrypted = Stringify.toEncryptedString(plaintext);
+    //         const decrypted = Stringify.toDecryptedString(encrypted);
+    //         expect(decrypted).toEqual(plaintext);
+    //     });
+    //
+    //     test('throws an error when passed an invalid encrypted string', () => {
+    //         const encrypted = 'not a valid encrypted string';
+    //         expect(() => Stringify.toDecryptedString(encrypted)).toThrow();
+    //     });
+    // });
 
-        test('throws an error when passed an invalid encrypted string', () => {
-            const encrypted = 'not a valid encrypted string';
-            expect(() => Stringify.toDecryptedString(encrypted)).toThrow();
-        });
-    });
-
-    describe('toDecryptedJSON', () => {
-        test('decrypts an encrypted JSON string to a JSON object', () => {
-            const encrypted = Stringify.toEncryptedString({ name: 'John', age: 30, city: 'New York' });
-            const jsonObject = Stringify.toDecryptedJSON(encrypted);
-            expect(jsonObject).toEqual({ name: 'John', age: 30, city: 'New York' });
-        });
-    });
+    // describe('toDecryptedJSON', () => {
+    //     test('decrypts an encrypted JSON string to a JSON object', () => {
+    //         const encrypted = Stringify.toEncryptedString({ name: 'John', age: 30, city: 'New York' });
+    //         const jsonObject = Stringify.toDecryptedJSON(encrypted);
+    //         expect(jsonObject).toEqual({ name: 'John', age: 30, city: 'New York' });
+    //     });
+    // });
 
     describe('toCamelCase', () => {
         test('converts a string to camel case', () => {

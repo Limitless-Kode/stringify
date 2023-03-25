@@ -12,6 +12,9 @@ dotenv_1.default.config();
  */
 class Stringify extends ncrypt_1.default {
     constructor(key) {
+        if (process.env.NODE_ENV === 'test') {
+            key = '6bef904c684547d18f15a47e09efdbc3';
+        }
         super(process.env.ENCRYPTION_KEY || key);
     }
     /**
@@ -55,15 +58,14 @@ class Stringify extends ncrypt_1.default {
      * const encrypted = Stringify.toEncryptedString(plaintext);
      * console.log(encrypted); // Encrypted string
      */
-    static toEncryptedString(value) {
-        try {
-            const stringify = new Stringify();
-            return stringify.encrypt(JSON.stringify(value));
-        }
-        catch (error) {
-            throw error;
-        }
-    }
+    // static toEncryptedString(value: any) {
+    //   try {
+    //     const stringify = new Stringify();
+    //     return stringify.encrypt(JSON.stringify(value));
+    //   } catch (error) {
+    //     throw error;
+    //   }
+    // }
     /**
      * Decrypts an encrypted string to plain text using the encryption key
      * @param value - The encrypted string
@@ -73,15 +75,14 @@ class Stringify extends ncrypt_1.default {
      * const plaintext = Stringify.toDecryptedString(encrypted);
      * console.log(plaintext); // 'my secret message'
      */
-    static toDecryptedString(value) {
-        try {
-            const stringify = new Stringify();
-            return JSON.parse(stringify.decrypt(value));
-        }
-        catch (error) {
-            throw error;
-        }
-    }
+    // static toDecryptedString(value: string) {
+    //   try {
+    //     const stringify = new Stringify();
+    //     return JSON.parse(stringify.decrypt(value));
+    //   } catch (error) {
+    //     throw error;
+    //   }
+    // }
     /**
      * Decrypts an encrypted string to a JSON object using the encryption key
      * @param value - The encrypted JSON string
@@ -91,15 +92,14 @@ class Stringify extends ncrypt_1.default {
      * const jsonObject = Stringify.toDecryptedJSON(encrypted);
      * console.log(jsonObject); // Decrypted JSON object
      */
-    static toDecryptedJSON(value) {
-        try {
-            const stringify = new Stringify();
-            return JSON.parse(stringify.decrypt(value));
-        }
-        catch (error) {
-            throw error;
-        }
-    }
+    // static toDecryptedJSON(value: string) {
+    //   try {
+    //     const stringify = new Stringify();
+    //     return JSON.parse(stringify.decrypt(value));
+    //   } catch (error: any) {
+    //     throw error;
+    //   }
+    // }
     // =====================================================================
     // Case conversion
     // =====================================================================
