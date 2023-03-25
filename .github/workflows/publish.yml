@@ -19,7 +19,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Install Jest
         run: npm install jest
-      - run: npm test
+      - run: NODE_ENV=test npm test
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

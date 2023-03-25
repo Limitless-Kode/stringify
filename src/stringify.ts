@@ -8,7 +8,7 @@ dotenv.config();
  */
 export default class Stringify extends Ncrypt {
   constructor(key?: string) {
-    if (process.env.JEST_WORKER_ID !== undefined) {
+    if (process.env.NODE_ENV === 'test') {
       key = '6bef904c684547d18f15a47e09efdbc3';
     }
 
