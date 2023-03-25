@@ -4,7 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const ncrypt_1 = __importDefault(require("./ncrypt"));
-require('dotenv').config();
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 /**
  * The Stringify class provides a set of utility methods for working with strings.
  * It extends the Ncrypt class for encryption and decryption capabilities.
@@ -112,7 +113,7 @@ class Stringify extends ncrypt_1.default {
      * console.log(camelCase); // 'exampleSentence'
      */
     static toCamelCase(str) {
-        return str.replace(/[-_]+(.)?/g, (_, c) => c ? c.toUpperCase() : '');
+        return str.replace(/[-_]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));
     }
     /**
      * Converts a string to snake case
@@ -273,7 +274,7 @@ class Stringify extends ncrypt_1.default {
      * @param {string} [paddingChar=" "] The character to use for padding. Defaults to " ".
      * @returns {string} The padded string.
      */
-    static padLeft(str, length, paddingChar = " ") {
+    static padLeft(str, length, paddingChar = ' ') {
         const padding = paddingChar.repeat(length);
         return (padding + str).slice(-length);
     }
@@ -287,7 +288,7 @@ class Stringify extends ncrypt_1.default {
      * @param {string} [paddingChar=" "] The character to use for padding. Defaults to " ".
      * @returns {string} The padded string.
      */
-    static padRight(str, length, paddingChar = " ") {
+    static padRight(str, length, paddingChar = ' ') {
         const padding = paddingChar.repeat(length);
         return (str + padding).slice(0, length);
     }
@@ -301,7 +302,7 @@ class Stringify extends ncrypt_1.default {
      * @param {string} [suffix="..."] The suffix to add if the string is truncated. Defaults to "...".
      * @returns {string} The truncated string.
      */
-    static truncate(str, maxLength, suffix = "...") {
+    static truncate(str, maxLength, suffix = '...') {
         if (str.length > maxLength) {
             return str.slice(0, maxLength - suffix.length) + suffix;
         }
