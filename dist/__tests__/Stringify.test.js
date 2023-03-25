@@ -4,6 +4,70 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const stringify_1 = __importDefault(require("../stringify"));
-test('toLowerCase', () => {
-    expect(stringify_1.default.toLowerCase('Carl')).toBe('carl');
+describe('Stringify', () => {
+    describe('toJson', () => {
+        test('converts a valid JSON string to a JSON object', () => {
+            const jsonString = '{"name":"John","age":30,"city":"New York"}';
+            const jsonObject = stringify_1.default.toJson(jsonString);
+            expect(jsonObject).toEqual({ name: 'John', age: 30, city: 'New York' });
+        });
+        test('throws an error when passed an invalid JSON string', () => {
+            const jsonString = 'not a valid json string';
+            expect(() => stringify_1.default.toJson(jsonString)).toThrow();
+        });
+    });
+    describe('toString', () => {
+        test('converts a valid JSON object to a JSON string', () => {
+            const jsonObject = { name: 'John', age: 30, city: 'New York' };
+            const jsonString = stringify_1.default.toString(jsonObject);
+            expect(jsonString).toEqual('{"name":"John","age":30,"city":"New York"}');
+        });
+    });
+    describe('toEncryptedString and toDecryptedString', () => {
+        test('encrypts and decrypts a string', () => {
+            const plaintext = 'my secret message';
+            const encrypted = stringify_1.default.toEncryptedString(plaintext);
+            const decrypted = stringify_1.default.toDecryptedString(encrypted);
+            expect(decrypted).toEqual(plaintext);
+        });
+        test('throws an error when passed an invalid encrypted string', () => {
+            const encrypted = 'not a valid encrypted string';
+            expect(() => stringify_1.default.toDecryptedString(encrypted)).toThrow();
+        });
+    });
+    describe('toDecryptedJSON', () => {
+        test('decrypts an encrypted JSON string to a JSON object', () => {
+            const encrypted = stringify_1.default.toEncryptedString({ name: 'John', age: 30, city: 'New York' });
+            const jsonObject = stringify_1.default.toDecryptedJSON(encrypted);
+            expect(jsonObject).toEqual({ name: 'John', age: 30, city: 'New York' });
+        });
+    });
+    describe('toCamelCase', () => {
+        test('converts a string to camel case', () => {
+            const sentence = 'example_sentence';
+            const camelCase = stringify_1.default.toCamelCase(sentence);
+            expect(camelCase).toEqual('exampleSentence');
+        });
+    });
+    describe('toSnakeCase', () => {
+        test('converts a string to snake case', () => {
+            const sentence = 'example-sentence';
+            const snakeCase = stringify_1.default.toSnakeCase(sentence);
+            expect(snakeCase).toEqual('example_sentence');
+        });
+    });
+    describe('toKebabCase', () => {
+        test('converts a string to kebab case', () => {
+            const sentence = 'example_sentence';
+            const kebabCase = stringify_1.default.toKebabCase(sentence);
+            expect(kebabCase).toEqual('example-sentence');
+        });
+    });
+    describe('toSentenceCase', () => {
+        test('converts a string to sentence case', () => {
+            const sentence = 'this is an example sentence.';
+            const sentenceCase = stringify_1.default.toSentenceCase(sentence);
+            expect(sentenceCase).toEqual('This is an example sentence.');
+        });
+    });
 });

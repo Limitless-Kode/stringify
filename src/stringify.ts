@@ -37,7 +37,7 @@ export default class Stringify extends Ncrypt {
    * const jsonString = Stringify.toString(jsonObject);
    * console.log(jsonString); // '{"name":"John","age":30,"city":"New York"}'
    */
-  static toString(value: string) {
+  static toString(value: object) {
     return JSON.stringify(value);
   }
 
@@ -75,7 +75,7 @@ export default class Stringify extends Ncrypt {
   static toDecryptedString(value: string) {
     try {
       const stringify = new Stringify();
-      return stringify.decrypt(value);
+      return JSON.parse(stringify.decrypt(value));
     } catch (error) {
       throw error;
     }
@@ -126,10 +126,17 @@ export default class Stringify extends Ncrypt {
    * console.log(snakeCase); // 'example_sentence'
    */
   static toSnakeCase(str: string): string {
-    return str.replace(/[A-Z]/g, (letter, index) => {
-      return index === 0 ? letter.toLowerCase() : '_' + letter.toLowerCase();
+    return str.replace(/([A-Z])|(\s+)|(-+)/g, (match, p1, p2, p3, index) => {
+      if (p1) {
+        return (index === 0 ? '' : '_') + p1.toLowerCase();
+      } else if (p2 || p3) {
+        return '_';
+      } else {
+        return '';
+      }
     });
   }
+
 
   /**
    * Converts a string to kebab case
@@ -141,10 +148,17 @@ export default class Stringify extends Ncrypt {
    * console.log(kebabCase); // 'example-sentence'
    */
   static toKebabCase(str: string): string {
-    return str.replace(/[A-Z]/g, (letter, index) => {
-      return index === 0 ? letter.toLowerCase() : '-' + letter.toLowerCase().trim();
+    return str.replace(/([A-Z])|(\s+)|(_+)/g, (match, p1, p2, p3, index) => {
+      if (p1) {
+        return (index === 0 ? '' : '-') + p1.toLowerCase();
+      } else if (p2 || p3) {
+        return '-';
+      } else {
+        return '';
+      }
     });
   }
+
 
   /**
    * Converts a string to sentence case

@@ -24,7 +24,7 @@ export default class Stringify extends Ncrypt {
      * const jsonString = Stringify.toString(jsonObject);
      * console.log(jsonString); // '{"name":"John","age":30,"city":"New York"}'
      */
-    static toString(value: string): string;
+    static toString(value: object): string;
     /**
      * Encrypts a string using the encryption key
      * @param value - The string to encrypt
@@ -44,7 +44,7 @@ export default class Stringify extends Ncrypt {
      * const plaintext = Stringify.toDecryptedString(encrypted);
      * console.log(plaintext); // 'my secret message'
      */
-    static toDecryptedString(value: string): string;
+    static toDecryptedString(value: string): any;
     /**
      * Decrypts an encrypted string to a JSON object using the encryption key
      * @param value - The encrypted JSON string

@@ -76,7 +76,7 @@ class Stringify extends ncrypt_1.default {
     static toDecryptedString(value) {
         try {
             const stringify = new Stringify();
-            return stringify.decrypt(value);
+            return JSON.parse(stringify.decrypt(value));
         }
         catch (error) {
             throw error;
@@ -125,8 +125,16 @@ class Stringify extends ncrypt_1.default {
      * console.log(snakeCase); // 'example_sentence'
      */
     static toSnakeCase(str) {
-        return str.replace(/[A-Z]/g, (letter, index) => {
-            return index === 0 ? letter.toLowerCase() : '_' + letter.toLowerCase();
+        return str.replace(/([A-Z])|(\s+)|(-+)/g, (match, p1, p2, p3, index) => {
+            if (p1) {
+                return (index === 0 ? '' : '_') + p1.toLowerCase();
+            }
+            else if (p2 || p3) {
+                return '_';
+            }
+            else {
+                return '';
+            }
         });
     }
     /**
@@ -139,8 +147,16 @@ class Stringify extends ncrypt_1.default {
      * console.log(kebabCase); // 'example-sentence'
      */
     static toKebabCase(str) {
-        return str.replace(/[A-Z]/g, (letter, index) => {
-            return index === 0 ? letter.toLowerCase() : '-' + letter.toLowerCase().trim();
+        return str.replace(/([A-Z])|(\s+)|(_+)/g, (match, p1, p2, p3, index) => {
+            if (p1) {
+                return (index === 0 ? '' : '-') + p1.toLowerCase();
+            }
+            else if (p2 || p3) {
+                return '-';
+            }
+            else {
+                return '';
+            }
         });
     }
     /**
