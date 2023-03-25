@@ -1,5 +1,3 @@
-import Stringify from "./stringify";
+import Stringify from './stringify';
 
-export {
-    Stringify
-}
+export { Stringify };

@@ -1,14 +1,14 @@
 import Ncrypt from './ncrypt';
-
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 /**
  * The Stringify class provides a set of utility methods for working with strings.
  * It extends the Ncrypt class for encryption and decryption capabilities.
  */
-export default class Stringify extends Ncrypt{
+export default class Stringify extends Ncrypt {
   constructor(key?: string) {
-    super(process.env.ENCRYPTION_KEY || key as string);
+    super(process.env.ENCRYPTION_KEY || (key as string));
   }
 
   /**
@@ -55,7 +55,7 @@ export default class Stringify extends Ncrypt{
    * console.log(encrypted); // Encrypted string
    */
   static toEncryptedString(value: any) {
-    try{
+    try {
       const stringify = new Stringify();
       return stringify.encrypt(JSON.stringify(value));
     } catch (error) {
@@ -73,14 +73,13 @@ export default class Stringify extends Ncrypt{
    * console.log(plaintext); // 'my secret message'
    */
   static toDecryptedString(value: string) {
-    try{
+    try {
       const stringify = new Stringify();
       return stringify.decrypt(value);
     } catch (error) {
       throw error;
     }
   }
-
 
   /**
    * Decrypts an encrypted string to a JSON object using the encryption key
@@ -92,7 +91,7 @@ export default class Stringify extends Ncrypt{
    * console.log(jsonObject); // Decrypted JSON object
    */
   static toDecryptedJSON(value: string) {
-    try{
+    try {
       const stringify = new Stringify();
       return JSON.parse(stringify.decrypt(value));
     } catch (error: any) {
@@ -114,7 +113,7 @@ export default class Stringify extends Ncrypt{
    * console.log(camelCase); // 'exampleSentence'
    */
   static toCamelCase(str: string): string {
-    return str.replace(/[-_]+(.)?/g, (_, c) => c ? c.toUpperCase() : '');
+    return str.replace(/[-_]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));
   }
 
   /**
@@ -198,7 +197,6 @@ export default class Stringify extends Ncrypt{
     return str.toLowerCase();
   }
 
-
   // =====================================================================
   // URL Encoding
   // =====================================================================
@@ -260,7 +258,6 @@ export default class Stringify extends Ncrypt{
     return result;
   }
 
-
   // =====================================================================
   // String formatting
   // =====================================================================
@@ -290,7 +287,7 @@ export default class Stringify extends Ncrypt{
    * @param {string} [paddingChar=" "] The character to use for padding. Defaults to " ".
    * @returns {string} The padded string.
    */
-  static padLeft(str: string, length: number, paddingChar: string = " "): string {
+  static padLeft(str: string, length: number, paddingChar: string = ' '): string {
     const padding = paddingChar.repeat(length);
     return (padding + str).slice(-length);
   }
@@ -305,7 +302,7 @@ export default class Stringify extends Ncrypt{
    * @param {string} [paddingChar=" "] The character to use for padding. Defaults to " ".
    * @returns {string} The padded string.
    */
-  static padRight(str: string, length: number, paddingChar: string = " "): string {
+  static padRight(str: string, length: number, paddingChar: string = ' '): string {
     const padding = paddingChar.repeat(length);
     return (str + padding).slice(0, length);
   }
@@ -320,7 +317,7 @@ export default class Stringify extends Ncrypt{
    * @param {string} [suffix="..."] The suffix to add if the string is truncated. Defaults to "...".
    * @returns {string} The truncated string.
    */
-  static truncate(str: string, maxLength: number, suffix: string = "..."): string {
+  static truncate(str: string, maxLength: number, suffix: string = '...'): string {
     if (str.length > maxLength) {
       return str.slice(0, maxLength - suffix.length) + suffix;
     } else {
