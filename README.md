@@ -11,7 +11,7 @@ This documentation provides an overview of the Stringify class, including its me
 To use Stringify, you need to have Node.js installed on your computer. Once you have Node.js installed, you can install the package using the following command in your terminal:
 
 ```
-npm install @limitless-kode/stringify
+npm install @limitless.claver/stringify
 ```
 
 ### Create a `.env` file
