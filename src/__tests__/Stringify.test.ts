@@ -1,4 +1,5 @@
 import Stringify from "../stringify";
+import Ncrypt from "../ncrypt";
 
 describe('Stringify', () => {
     describe('toJson', () => {
