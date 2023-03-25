@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@limitless.claver/stringify': ^1.0.0
   '@types/node': ^18.14.2
   dotenv: ^16.0.3
   jest: ^29.5.0
@@ -8,6 +9,7 @@ specifiers:
   typescript: ^4.9.5
 
 dependencies:
+  '@limitless.claver/stringify': 1.0.0
   dotenv: 16.0.3
 
 devDependencies:
@@ -625,6 +627,12 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@limitless.claver/stringify/1.0.0:
+    resolution: {integrity: sha512-vr1GNhM8zMVo12/IEp5d39Zv/VBKvayrWEl0wrO9ZZAQnf/+UQOPOW3yVO5iX9R7F7p9cT8SyAbcvRRv0B4QRw==}
+    dependencies:
+      dotenv: 16.0.3
+    dev: false
 
   /@sinclair/typebox/0.25.24:
     resolution: {integrity: sha512-XJfwUVUKDHF5ugKwIcxEgc9k8b7HbznCp6eUfWgu710hMPNIO4aw4/zB5RogDQz8nd6gyCDpU9O/m6qYEWY6yQ==}

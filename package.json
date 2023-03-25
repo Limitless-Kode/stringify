@@ -1,5 +1,5 @@
 {
-  "name": "@claver/stringify",
+  "name": "@limitless.claver/stringify",
   "repository": {
     "type": "git",
     "url": "https://github.com/limitless-kode/stringify.git"
@@ -9,7 +9,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "start": "tsc && node dist/index.js",
-    "dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly ../test/index.ts",
     "build": "tsc"
   },
   "keywords": [
@@ -18,7 +18,7 @@
     "encrypt-string"
   ],
   "author": {
-    "name":  "Peter Claver",
+    "name": "Peter Claver",
     "email": "limitless.claver@gmail.com"
   },
   "license": "MIT",
@@ -29,6 +29,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@limitless.claver/stringify": "^1.0.0",
     "dotenv": "^16.0.3"
   }
 }
