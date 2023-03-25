@@ -34,6 +34,7 @@ export default class Stringify extends Ncrypt {
      * const encrypted = Stringify.toEncryptedString(plaintext);
      * console.log(encrypted); // Encrypted string
      */
+    static toEncryptedString(value: any): string;
     /**
      * Decrypts an encrypted string to plain text using the encryption key
      * @param value - The encrypted string
@@ -43,6 +44,7 @@ export default class Stringify extends Ncrypt {
      * const plaintext = Stringify.toDecryptedString(encrypted);
      * console.log(plaintext); // 'my secret message'
      */
+    static toDecryptedString(value: string): any;
     /**
      * Decrypts an encrypted string to a JSON object using the encryption key
      * @param value - The encrypted JSON string
@@ -52,6 +54,7 @@ export default class Stringify extends Ncrypt {
      * const jsonObject = Stringify.toDecryptedJSON(encrypted);
      * console.log(jsonObject); // Decrypted JSON object
      */
+    static toDecryptedJSON(value: string): any;
     /**
      * Converts a string to camel case
      * @param str - The string to convert
