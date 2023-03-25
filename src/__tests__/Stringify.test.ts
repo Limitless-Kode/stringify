@@ -75,5 +75,93 @@ describe('Stringify', () => {
             expect(sentenceCase).toEqual('This is an example sentence.');
         });
     });
+
+
+    describe('toTitleCase()', () => {
+        it('should convert a string to title case', () => {
+            const result = Stringify.toTitleCase('example sentence');
+            expect(result).toBe('Example Sentence');
+        });
+    });
+
+    describe('toUpperCase()', () => {
+        it('should convert a string to uppercase', () => {
+            const result = Stringify.toUpperCase('example sentence');
+            expect(result).toBe('EXAMPLE SENTENCE');
+        });
+    });
+
+    describe('toLowerCase()', () => {
+        it('should convert a string to lowercase', () => {
+            const result = Stringify.toLowerCase('Example Sentence');
+            expect(result).toBe('example sentence');
+        });
+    });
+
+    describe('encodeQueryString()', () => {
+        it('should encode an object into a query string', () => {
+            const result = Stringify.encodeQueryString({
+                param1: 'value1',
+                param2: 'value2'
+            });
+            expect(result).toBe('param1=value1&param2=value2');
+        });
+    });
+
+    describe('decodeQueryString()', () => {
+        it('should decode a query string into an object', () => {
+            const result = Stringify.decodeQueryString('param1=value1&param2=value2');
+            expect(result).toEqual({
+                param1: 'value1',
+                param2: 'value2'
+            });
+        });
+    });
+
+    describe('parseUrl()', () => {
+        it('should parse a URL into an object', () => {
+            const result = Stringify.parseUrl('http://example.com/?param1=value1&param2=value2');
+            expect(result).toEqual({
+                protocol: 'http:',
+                hostname: 'example.com',
+                port: '',
+                pathname: '/',
+                param1: 'value1',
+                param2: 'value2'
+            });
+        });
+    });
+
+    describe('formatString()', () => {
+        it('should format a string template with the given values', () => {
+            const result = Stringify.formatString('Hello, ${name}!', { name: 'John' });
+            expect(result).toBe('Hello, John!');
+        });
+    });
+
+    describe('padLeft()', () => {
+        it('should pad the left side of a string with a padding character until it reaches the given length', () => {
+            const result = Stringify.padLeft('abc', 5, '_');
+            expect(result).toBe('__abc');
+        });
+
+        it('should pad the left side of a string with spaces by default', () => {
+            const result = Stringify.padLeft('abc', 4);
+            expect(result).toBe(' abc');
+        });
+    });
+
+    describe('padRight()', () => {
+        it('should pad the right side of a string with a padding character until it reaches the given length', () => {
+            const result = Stringify.padRight('abc', 4, '_');
+            expect(result).toBe('abc_');
+        });
+
+        it('should pad the right side of a string with spaces by default', () => {
+            const result = Stringify.padRight('abc', 4);
+            expect(result).toBe('abc ');
+        });
+    });
+
 });
 
