@@ -146,4 +146,21 @@ describe('Stringify', () => {
             expect(result).toBe('abc ');
         });
     });
+    describe('jsonToXml and xmlToJson', () => {
+        describe('jsonToXml()', () => {
+            it('should correctly convert JSON to XML', () => {
+                const jsonData = '{"name": "John Smith", "age": 30, "cars": ["Ford", "BMW", "Fiat"], "address": {"street": "123 Main St", "city": "Anytown", "state": "CA"}}';
+                const expectedXml = '<root><name>John Smith</name><age>30</age><cars><car>Ford</car><car>BMW</car><car>Fiat</car></cars><address><street>123 Main St</street><city>Anytown</city><state>CA</state></address></root>';
+                expect(stringify_1.default.jsonToXml(jsonData)).toEqual(expectedXml);
+            });
+        });
+        describe('xmlToJson()', () => {
+            it('should correctly convert XML to JSON', () => {
+                const xmlData = '<root><name>John Smith</name><age>30</age><cars><car>Ford</car><car>BMW</car><car>Fiat</car></cars><address><street>123 Main St</street><city>Anytown</city><state>CA</state></address></root>';
+                const expectedJson = { "name": "John Smith", "age": "30", "cars": ["Ford", "BMW", "Fiat"], "address": { "street": "123 Main St", "city": "Anytown", "state": "CA" } };
+                expect(stringify_1.default.xmlToJson(xmlData)).toEqual(expectedJson);
+            });
+        });
+    });
 });
+//# sourceMappingURL=Stringify.test.js.map

@@ -6,3 +6,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Stringify = void 0;
 const stringify_1 = __importDefault(require("./stringify"));
 exports.Stringify = stringify_1.default;
+//# sourceMappingURL=index.js.map

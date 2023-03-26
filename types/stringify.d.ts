@@ -14,7 +14,7 @@ export default class Stringify extends Ncrypt {
      * const jsonObject = Stringify.toJson(jsonString);
      * console.log(jsonObject); // { name: 'John', age: 30, city: 'New York' }
      */
-    static toJson(value: string): any;
+    static toJson(value: string): object;
     /**
      * Converts a valid JSON object to a string
      * @param value - A JSON object
@@ -192,6 +192,7 @@ export default class Stringify extends Ncrypt {
      * @returns {string} The truncated string.
      */
     static truncate(str: string, maxLength: number, suffix?: string): string;
+    private static domParser;
     private static buildXml;
     private static buildJson;
     /**
@@ -211,5 +212,5 @@ export default class Stringify extends Ncrypt {
      * @param {string} xmlData The string to convert.
      * @returns {object} The JSON object.
      */
-    static xmlToJson(xmlData: string): string;
+    static xmlToJson(xmlData: string): object;
 }

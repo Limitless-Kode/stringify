@@ -4,8 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const ncrypt_1 = __importDefault(require("./ncrypt"));
+const xmldom_1 = require("xmldom");
+global.DOMParser = xmldom_1.DOMParser;
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+class MockDOMParser {
+    parseFromString(xmlString, contentType) {
+        const parser = new window.DOMParser();
+        return parser.parseFromString(xmlString, contentType);
+    }
+}
 /**
  * The Stringify class provides a set of utility methods for working with strings.
  * It extends the Ncrypt class for encryption and decryption capabilities.
@@ -329,5 +337,101 @@ class Stringify extends ncrypt_1.default {
             return str;
         }
     }
+    static buildXml(data) {
+        let xmlStr = '';
+        if (typeof data === 'object') {
+            for (const [key, value] of Object.entries(data)) {
+                if (Array.isArray(value)) {
+                    xmlStr += `<${key}>`;
+                    for (const item of value) {
+                        xmlStr += `${Stringify.buildXml({ [key.slice(0, -1)]: item })}`;
+                    }
+                    xmlStr += `</${key}>`;
+                }
+                else if (typeof value === 'object') {
+                    xmlStr += `<${key}>${Stringify.buildXml(value)}</${key}>`;
+                }
+                else {
+                    xmlStr += `<${key}>${value}</${key}>`;
+                }
+            }
+        }
+        return xmlStr;
+    }
+    static buildJson(xmlNode) {
+        const jsonObj = {};
+        if (xmlNode.hasAttributes()) {
+            const attributes = Array.from(xmlNode.attributes);
+            for (const attr of attributes) {
+                jsonObj['@' + attr.name] = attr.value;
+            }
+        }
+        if (xmlNode.hasChildNodes()) {
+            const childNodes = Array.from(xmlNode.childNodes);
+            for (const childNode of childNodes) {
+                if (childNode.nodeType === Node.TEXT_NODE) {
+                    return childNode.nodeValue;
+                }
+                else if (childNode.nodeType === Node.ELEMENT_NODE) {
+                    if (jsonObj[childNode.nodeName]) {
+                        if (!Array.isArray(jsonObj[childNode.nodeName])) {
+                            // if this is the second child node with this name, create an array
+                            jsonObj[childNode.nodeName] = [jsonObj[childNode.nodeName]];
+                        }
+                        jsonObj[childNode.nodeName].push(Stringify.buildJson(childNode));
+                    }
+                    else if (childNode.nodeName === 'address') {
+                        // if this is the 'address' node, create an object for it
+                        jsonObj[childNode.nodeName] = Stringify.buildJson(childNode);
+                    }
+                    else if (childNode.childNodes.length === 1) {
+                        // if this node only has one child node, just add its value to the object
+                        jsonObj[childNode.nodeName] = Stringify.buildJson(childNode);
+                    }
+                    else {
+                        // if this node has multiple child nodes with the same name, create an array
+                        jsonObj[childNode.nodeName] = [];
+                        for (const nestedChildNode of Array.from(childNode.childNodes)) {
+                            jsonObj[childNode.nodeName].push(Stringify.buildJson(nestedChildNode));
+                        }
+                    }
+                }
+            }
+        }
+        return jsonObj;
+    }
+    /**
+     * Converts JSON string to XML
+     * @example
+     * // Returns "<name>Claver</name>"
+     * Stringify.jsonToXml({name: Claver});
+     * @param {string} jsonData The string to convert.
+     * @returns {string} The truncated string.
+     */
+    static jsonToXml(jsonData) {
+        const jsonObj = JSON.parse(jsonData);
+        const xmlStr = '<root>' + Stringify.buildXml(jsonObj) + '</root>';
+        return xmlStr;
+    }
+    /**
+     * Converts XML to JSON object
+     * @example
+     * // Returns {name: Claver}
+     * Stringify.xmlToJson("<name>Claver</name>");
+     * @param {string} xmlData The string to convert.
+     * @returns {object} The JSON object.
+     */
+    static xmlToJson(xmlData) {
+        // const parser = new DOMParser();
+        const parser = new Stringify.domParser();
+        const xmlDoc = parser.parseFromString(xmlData, 'text/xml');
+        const jsonStr = Stringify.buildJson(xmlDoc.documentElement);
+        console.log(jsonStr);
+        return Stringify.toJson(Stringify.toString(jsonStr));
+    }
 }
 exports.default = Stringify;
+Stringify.domParser = typeof window !== 'undefined'
+    ? window.DOMParser
+    : MockDOMParser;
+//# sourceMappingURL=stringify.js.map
