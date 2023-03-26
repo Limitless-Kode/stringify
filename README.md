@@ -1,12 +1,17 @@
 # Stringify
 
+![npm](https://img.shields.io/npm/v/@limitless.claver/stringify)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/limitless-kode/stringify/publish.yml)
+![GitHub issues](https://img.shields.io/github/issues/limitless-kode/stringify)
+![GitHub top language](https://img.shields.io/github/languages/top/limitless-kode/stringify)
+![npm](https://img.shields.io/npm/dw/@limitless.claver/stringify)
 
 Stringify provides a set of methods for working with JSON strings and objects, case conversion, as well as encryption and decryption capabilities. It extends the Ncrypt class for encryption and decryption, and also allows you to convert JSON strings to JSON objects, and vice versa.
 
 In this library, you'll find a variety of string conversion methods such as converting strings to camel case, snake case, kebab case, and sentence case. You can also encrypt and decrypt strings using the encryption key provided or via the .env file.
 
 This documentation provides an overview of the Stringify class, including its methods, parameters, return types, and examples of how to use them. Whether you're working on a small or large project, Stringify aims to provide an easy-to-use set of tools that can help you with common string manipulation tasks.
-
+q
 ## Installation
 
 To use Stringify, you need to have Node.js installed on your computer. Once you have Node.js installed, you can install the package using the following command in your terminal:
