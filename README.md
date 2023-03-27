@@ -288,6 +288,51 @@ Stringify.parseUrl("https://www.example.com/search?q=example");
 ### Returns
 
 - An object containing the parsed URL properties.
+  <br/>
+  <br/>
+  <br/>
+
+### **Data Type Conversions**
+
+### **`xmlToJson(xml: string): string`**
+
+Converts XML string to valid JSON objects
+
+### Example
+
+```jsx
+Stringify.xmlToJson("<root><name>Claver</name></root>"); // "{name: 'Claver'}"
+```
+
+### Parameters
+
+- **`xml`**: The XML string to convert to JSON
+
+### Returns
+
+- A JSON object converted frm the XML string 
+
+<br />
+<br />
+
+### **`jsonToXml(json: string): string`**
+
+Converts JSON objects to valid XML
+
+### Example
+
+```jsx
+Stringify.jsonToXml({"name": "Claver"}); // <name>Claver</name>
+```
+
+### Parameters
+
+- **`xml`**: The JSON object to convert to XML
+
+### Returns
+
+- A JSON object converted frm the XML string
+
 
 ## Options
 
