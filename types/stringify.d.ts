@@ -194,7 +194,9 @@ export default class Stringify extends Ncrypt {
     static truncate(str: string, maxLength: number, suffix?: string): string;
     private static domParser;
     private static buildXml;
+    private static buildJson2;
     private static buildJson;
+    private static isPlural;
     /**
      * Converts JSON string to XML
      * @example

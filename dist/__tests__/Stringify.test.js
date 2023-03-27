@@ -93,7 +93,7 @@ describe('Stringify', () => {
         it('should encode an object into a query string', () => {
             const result = stringify_1.default.encodeQueryString({
                 param1: 'value1',
-                param2: 'value2'
+                param2: 'value2',
             });
             expect(result).toBe('param1=value1&param2=value2');
         });
@@ -103,7 +103,7 @@ describe('Stringify', () => {
             const result = stringify_1.default.decodeQueryString('param1=value1&param2=value2');
             expect(result).toEqual({
                 param1: 'value1',
-                param2: 'value2'
+                param2: 'value2',
             });
         });
     });
@@ -116,7 +116,7 @@ describe('Stringify', () => {
                 port: '',
                 pathname: '/',
                 param1: 'value1',
-                param2: 'value2'
+                param2: 'value2',
             });
         });
     });
@@ -157,7 +157,12 @@ describe('Stringify', () => {
         describe('xmlToJson()', () => {
             it('should correctly convert XML to JSON', () => {
                 const xmlData = '<root><name>John Smith</name><age>30</age><cars><car>Ford</car><car>BMW</car><car>Fiat</car></cars><address><street>123 Main St</street><city>Anytown</city><state>CA</state></address></root>';
-                const expectedJson = { "name": "John Smith", "age": "30", "cars": ["Ford", "BMW", "Fiat"], "address": { "street": "123 Main St", "city": "Anytown", "state": "CA" } };
+                const expectedJson = {
+                    name: 'John Smith',
+                    age: '30',
+                    cars: { car: ['Ford', 'BMW', 'Fiat'] },
+                    address: { street: '123 Main St', city: 'Anytown', state: 'CA' },
+                };
                 expect(stringify_1.default.xmlToJson(xmlData)).toEqual(expectedJson);
             });
         });

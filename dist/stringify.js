@@ -7,13 +7,8 @@ const ncrypt_1 = __importDefault(require("./ncrypt"));
 const xmldom_1 = require("xmldom");
 global.DOMParser = xmldom_1.DOMParser;
 const dotenv_1 = __importDefault(require("dotenv"));
+const dom_parser_mock_1 = __importDefault(require("./dom-parser-mock"));
 dotenv_1.default.config();
-class MockDOMParser {
-    parseFromString(xmlString, contentType) {
-        const parser = new window.DOMParser();
-        return parser.parseFromString(xmlString, contentType);
-    }
-}
 /**
  * The Stringify class provides a set of utility methods for working with strings.
  * It extends the Ncrypt class for encryption and decryption capabilities.
@@ -358,7 +353,7 @@ class Stringify extends ncrypt_1.default {
         }
         return xmlStr;
     }
-    static buildJson(xmlNode) {
+    static buildJson2(xmlNode) {
         const jsonObj = {};
         if (xmlNode.hasAttributes()) {
             const attributes = Array.from(xmlNode.attributes);
@@ -400,6 +395,37 @@ class Stringify extends ncrypt_1.default {
         }
         return jsonObj;
     }
+    static buildJson(xml) {
+        const jsonObj = {};
+        if (xml.hasChildNodes()) {
+            const childNodes = Array.from(xml.childNodes);
+            for (const el of childNodes) {
+                if (el.nodeType === Node.TEXT_NODE) {
+                    return el.nodeValue;
+                }
+                else if (el.nodeType === Node.ELEMENT_NODE) {
+                    const key = el.tagName;
+                    if (jsonObj[key]) {
+                        if (!Array.isArray(jsonObj[key])) {
+                            jsonObj[key] = [jsonObj[key]];
+                        }
+                        jsonObj[key].push(Stringify.buildJson(el));
+                    }
+                    else {
+                        jsonObj[key] = Stringify.buildJson(el);
+                    }
+                }
+            }
+        }
+        return jsonObj;
+    }
+    static isPlural(parentTagName, tagName) {
+        parentTagName = parentTagName.toLowerCase();
+        tagName = tagName.toLowerCase();
+        return (parentTagName.slice(-1) === 's' &&
+            parentTagName.startsWith(tagName) &&
+            parentTagName.slice(0, tagName.length) === tagName);
+    }
     /**
      * Converts JSON string to XML
      * @example
@@ -426,12 +452,9 @@ class Stringify extends ncrypt_1.default {
         const parser = new Stringify.domParser();
         const xmlDoc = parser.parseFromString(xmlData, 'text/xml');
         const jsonStr = Stringify.buildJson(xmlDoc.documentElement);
-        console.log(jsonStr);
         return Stringify.toJson(Stringify.toString(jsonStr));
     }
 }
 exports.default = Stringify;
-Stringify.domParser = typeof window !== 'undefined'
-    ? window.DOMParser
-    : MockDOMParser;
+Stringify.domParser = typeof window !== 'undefined' ? window.DOMParser : dom_parser_mock_1.default;
 //# sourceMappingURL=stringify.js.map

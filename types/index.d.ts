@@ -1,2 +1,2 @@
 import Stringify from './stringify';
-export { Stringify };
+export default Stringify;
