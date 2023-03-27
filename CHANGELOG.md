@@ -1,5 +1,12 @@
 
 
+## [1.2.5](https://github.com/limitless-kode/stringify/compare/v1.2.4...v1.2.5) (2023-03-27)
+
+
+### Bug Fixes
+
+* destructure import ([11b58d0](https://github.com/limitless-kode/stringify/commit/11b58d0a3cb9e171d3d7b2fee542af3021b9ffcc))
+
 ## [1.2.4](https://github.com/limitless-kode/stringify/compare/v1.2.3...v1.2.4) (2023-03-27)
 
 
