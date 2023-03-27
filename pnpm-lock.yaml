@@ -23,6 +23,7 @@ specifiers:
 
 dependencies:
   dotenv: 16.0.3
+  xmldom: 0.6.0
 
 devDependencies:
   '@commitlint/cli': 17.5.0
@@ -42,7 +43,6 @@ devDependencies:
   tslint: 6.1.3_typescript@4.9.5
   tslint-config-prettier: 1.18.0
   typescript: 4.9.5
-  xmldom: 0.6.0
 
 packages:
 
@@ -6120,7 +6120,7 @@ packages:
   /xmldom/0.6.0:
     resolution: {integrity: sha512-iAcin401y58LckRZ0TkI4k0VSM1Qg0KGSc3i8rU+xrxe19A/BN1zHyVSJY7uoutVlaTSzYyk/v5AmkewAP7jtg==}
     engines: {node: '>=10.0.0'}
-    dev: true
+    dev: false
 
   /xregexp/2.0.0:
     resolution: {integrity: sha512-xl/50/Cf32VsGq/1R8jJE5ajH1yMCQkpmoS10QbFZWl2Oor4H0Me64Pu2yxvsRWK3m6soJbmGfzSR7BYmDcWAA==}
