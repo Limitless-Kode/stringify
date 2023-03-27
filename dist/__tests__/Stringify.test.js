@@ -23,26 +23,25 @@ describe('Stringify', () => {
             expect(jsonString).toEqual('{"name":"John","age":30,"city":"New York"}');
         });
     });
-    // describe('toEncryptedString and toDecryptedString', () => {
-    //     test('encrypts and decrypts a string', () => {
-    //         const plaintext = 'my secret message';
-    //         const encrypted = Stringify.toEncryptedString(plaintext);
-    //         const decrypted = Stringify.toDecryptedString(encrypted);
-    //         expect(decrypted).toEqual(plaintext);
-    //     });
-    //
-    //     test('throws an error when passed an invalid encrypted string', () => {
-    //         const encrypted = 'not a valid encrypted string';
-    //         expect(() => Stringify.toDecryptedString(encrypted)).toThrow();
-    //     });
-    // });
-    // describe('toDecryptedJSON', () => {
-    //     test('decrypts an encrypted JSON string to a JSON object', () => {
-    //         const encrypted = Stringify.toEncryptedString({ name: 'John', age: 30, city: 'New York' });
-    //         const jsonObject = Stringify.toDecryptedJSON(encrypted);
-    //         expect(jsonObject).toEqual({ name: 'John', age: 30, city: 'New York' });
-    //     });
-    // });
+    describe('toEncryptedString and toDecryptedString', () => {
+        test('encrypts and decrypts a string', () => {
+            const plaintext = 'my secret message';
+            const encrypted = stringify_1.default.toEncryptedString(plaintext);
+            const decrypted = stringify_1.default.toDecryptedString(encrypted);
+            expect(decrypted).toEqual(plaintext);
+        });
+        test('throws an error when passed an invalid encrypted string', () => {
+            const encrypted = 'not a valid encrypted string';
+            expect(() => stringify_1.default.toDecryptedString(encrypted)).toThrow();
+        });
+    });
+    describe('toDecryptedJSON', () => {
+        test('decrypts an encrypted JSON string to a JSON object', () => {
+            const encrypted = stringify_1.default.toEncryptedString({ name: 'John', age: 30, city: 'New York' });
+            const jsonObject = stringify_1.default.toDecryptedJSON(encrypted);
+            expect(jsonObject).toEqual({ name: 'John', age: 30, city: 'New York' });
+        });
+    });
     describe('toCamelCase', () => {
         test('converts a string to camel case', () => {
             const sentence = 'example_sentence';
