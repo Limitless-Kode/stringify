@@ -1,5 +1,12 @@
 
 
+## [1.2.4](https://github.com/limitless-kode/stringify/compare/v1.2.3...v1.2.4) (2023-03-27)
+
+
+### Bug Fixes
+
+* added xmldom to main dependencies because the json and xml conversions require it ([96ad811](https://github.com/limitless-kode/stringify/commit/96ad811025c930cf5da1d17b0faf1459cdfff5cd))
+
 ## [1.2.3](https://github.com/limitless-kode/stringify/compare/v1.2.2...v1.2.3) (2023-03-27)
 
 
