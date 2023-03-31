@@ -1,10 +1,12 @@
 # Stringify
 
-![npm](https://img.shields.io/npm/v/@limitless.claver/stringify)
+[![NPM version](https://img.shields.io/npm/v/@limitless.claver/stringify.svg?style=flat-square)](https://www.npmjs.com/package/@limitless.claver/stringify)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/limitless-kode/stringify/publish.yml)
 ![GitHub issues](https://img.shields.io/github/issues/limitless-kode/stringify)
 ![GitHub top language](https://img.shields.io/github/languages/top/limitless-kode/stringify)
 ![npm](https://img.shields.io/npm/dw/@limitless.claver/stringify)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
+[![LICENSE](https://img.shields.io/github/license/limitless-kode/stringify.svg)](LICENSE)
 
 Stringify provides a set of methods for working with JSON strings and objects, case conversion, as well as encryption and decryption capabilities. It extends the Ncrypt class for encryption and decryption, and also allows you to convert JSON strings to JSON objects, and vice versa.
 
@@ -31,13 +33,13 @@ ENCRYPTION_KEY=6bef904c684547d18f15a47e09ecdbb3
 
 ## Usage
 
-### **Encryption and Decryption Methods**
+### Encryption and Decryption Methods
 
-### **`toEncryptedString(value: any): string`**
+### `toEncryptedString(value: any): string`
 
 Encrypts a string using the encryption key.
 
-### **Example**
+#### Example
 
 ```jsx
 const plaintext = 'my secret message';
@@ -45,19 +47,19 @@ const encrypted = Stringify.toEncryptedString(plaintext);
 console.log(encrypted); // Encrypted string
 ```
 
-### **Parameters**
+#### Parameters
 
-- **`value`**: The string to encrypt.
+- `value`: The string to encrypt.
 
-### **Returns**
+#### Returns
 
 - The encrypted string.
 
-### **`toDecryptedString(value: string): string`**
+### `toDecryptedString(value: string): string`
 
 Decrypts an encrypted string to plain text using the encryption key.
 
-### **Example**
+#### Example
 
 ```jsx
 const encrypted = 'Encrypted string';
@@ -65,19 +67,19 @@ const plaintext = Stringify.toDecryptedString(encrypted);
 console.log(plaintext); // 'my secret message'
 ```
 
-### **Parameters**
+#### Parameters
 
-- **`value`**: The encrypted string.
+- `value`: The encrypted string.
 
-### **Returns**
+#### Returns
 
 - The decrypted string.
 
-### **`toDecryptedJSON(value: string): any`**
+### `toDecryptedJSON(value: string): any`
 
 Decrypts an encrypted string to a JSON object using the encryption key.
 
-### **Example**
+#### Example
 
 ```jsx
 const encrypted = 'Encrypted JSON string';
@@ -85,26 +87,26 @@ const jsonObject = Stringify.toDecryptedJSON(encrypted);
 console.log(jsonObject); // Decrypted JSON object
 ```
 
-### **Parameters**
+#### Parameters
 
-- **`value`**: The encrypted JSON string.
+- `value`: The encrypted JSON string.
 
-### **Returns**
+#### Returns
 
 - The decrypted JSON object.
 
-### **String Formatting Methods**
+### String Formatting Methods
 
-### **`formatString(template: string, values: Record<string, any>): string`**
+### `formatString(template: string, values: Record<string, any>): string`
 
-The **`formatString`** method replaces placeholders in a string template with values from an object.
+The `formatString` method replaces placeholders in a string template with values from an object.
 
-### **Parameters**
+#### Parameters
 
-- **`template`** (required) - The string template with placeholders to replace.
-- **`values`** (required) - The object containing the values to use for replacement.
+- `template` (required) - The string template with placeholders to replace.
+- `values` (required) - The object containing the values to use for replacement.
 
-### **Example**
+#### Example
 
 ```jsx
 const template = 'Hello, ${firstName} ${lastName}!';
@@ -114,17 +116,17 @@ console.log(formattedString);
 // Output: "Hello, John Doe!"
 ```
 
-### **`padLeft(str: string, length: number, paddingChar: string = " "): string`**
+### `padLeft(str: string, length: number, paddingChar: string = " "): string`
 
-The **`padLeft`** method pads a string on the left with a specified character until it reaches the desired length.
+The `padLeft` method pads a string on the left with a specified character until it reaches the desired length.
 
-### **Parameters**
+#### Parameters
 
-- **`str`** (required) - The string to pad.
-- **`length`** (required) - The length to which the string should be padded.
-- **`paddingChar`** (optional) - The character to use for padding. The default value is a space character.
+- `str` (required) - The string to pad.
+- `length` (required) - The length to which the string should be padded.
+- `paddingChar` (optional) - The character to use for padding. The default value is a space character.
 
-### **Example**
+#### Example
 
 ```jsx
 const str = '123';
@@ -133,17 +135,17 @@ console.log(paddedString);
 // Output: "00123"
 ```
 
-### **`padRight(str: string, length: number, paddingChar: string = " "): string`**
+### `padRight(str: string, length: number, paddingChar: string = " "): string`
 
-The **`padRight`** method pads a string on the right with a specified character until it reaches the desired length.
+The `padRight` method pads a string on the right with a specified character until it reaches the desired length.
 
-### **Parameters**
+#### Parameters
 
-- **`str`** (required) - The string to pad.
-- **`length`** (required) - The length to which the string should be padded.
-- **`paddingChar`** (optional) - The character to use for padding. The default value is a space character.
+- `str` (required) - The string to pad.
+- `length` (required) - The length to which the string should be padded.
+- `paddingChar` (optional) - The character to use for padding. The default value is a space character.
 
-### **Example**
+#### Example
 
 ```jsx
 const str = '123';
@@ -152,17 +154,17 @@ console.log(paddedString);
 // Output: "12300"
 ```
 
-### **`truncate(str: string, maxLength: number, suffix: string = "..."): string`**
+### `truncate(str: string, maxLength: number, suffix: string = "..."): string`
 
-The **`truncate`** method truncates a string to a specified maximum length and appends a suffix to the end of the string.
+The `truncate` method truncates a string to a specified maximum length and appends a suffix to the end of the string.
 
-### **Parameters**
+#### Parameters
 
-- **`str`** (required) - The string to truncate.
-- **`maxLength`** (required) - The maximum length of the truncated string.
-- **`suffix`** (optional) - The suffix to append to the end of the string if it is truncated. The default value is "...".
+- `str` (required) - The string to truncate.
+- `maxLength` (required) - The maximum length of the truncated string.
+- `suffix` (optional) - The suffix to append to the end of the string if it is truncated. The default value is "...".
 
-### **Example**
+#### Example
 
 ```jsx
 const str = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem';
@@ -176,198 +178,404 @@ console.log(truncatedString);
 // Output: "Lorem ipsum dolor sit amet, consectetur adipisc (continue)"
 ```
 
-### **String Case Conversion Methods**
+### String Case Conversion Methods
 
-### **`toTitleCase(str: string): string`**
+### `toTitleCase(str: string): string`
 
 Converts the first letter of each word in a given string to uppercase and the remaining letters to lowercase.
 
-### Example
+#### Example
 
 ```jsx
 Stringify.toTitleCase("example sentence"); // "Example Sentence"
 ```
 
-### Parameters
+#### Parameters
 
-- **`str`**: The string to convert to title case.
+- `str`: The string to convert to title case.
 
-### Returns
+#### Returns
 
 - A string that has been converted to title case.
 
-### **`toUpperCase(str: string): string`**
+### `toUpperCase(str: string): string`
 
 Converts all letters in a given string to uppercase.
 
-### Example
+#### Example
 
 ```jsx
 Stringify.toUpperCase("example sentence"); // "EXAMPLE SENTENCE"
 ```
 
-### Parameters
+#### Parameters
 
-- **`str`**: The string to convert to uppercase.
+- `str`: The string to convert to uppercase.
 
-### Returns
+#### Returns
 
 - A string that has been converted to uppercase.
 
-### **`toLowerCase(str: string): string`**
+### `toLowerCase(str: string): string`
 
 Converts all letters in a given string to lowercase.
 
-### Example
+#### Example
 
 ```jsx
 Stringify.toLowerCase("Example Sentence"); // "example sentence"
 ```
 
-### Parameters
+#### Parameters
 
-- **`str`**: The string to convert to lowercase.
+- `str`: The string to convert to lowercase.
 
-### Returns
+#### Returns
 
 - A string that has been converted to lowercase.
 
-### URL Encoding **Methods**
+### `replace(str: string, oldSubstring: string, newSubstring: string): string`
 
-### **`encodeQueryString(params: Record<string, any>): string`**
+Replaces all occurrences of a substring with a new substring in a given string.
+
+##### Parameters:
+
+- `str`: The input string to be processed.
+- `oldSubstring`: The substring to be replaced.
+- `newSubstring`: The new substring to replace the old substring.
+
+##### Returns:
+
+A new string with all occurrences of the old substring replaced with the new substring.
+
+##### Example:
+
+```typescript
+const input = "hello world";
+const output = Stringify.replace(input, "world", "universe");
+console.log(output); // "hello universe"
+```
+
+
+
+### `replaceAll(str: string, oldSubstring: string, newSubstring: string): string`
+
+Replaces all occurrences of a substring with a new substring in a given string.
+
+#### Parameters:
+
+- `str`: The input string to be processed.
+- `oldSubstring`: The substring to be replaced.
+- `newSubstring`: The new substring to replace the old substring.
+
+#### Returns:
+
+A new string with all occurrences of the old substring replaced with the new substring.
+
+#### Example:
+
+```typescript
+const input = "hello world";
+const output = Stringify.replaceAll(input, "o", "x");
+console.log(output); // "hellx wxrld"
+```
+
+### `removeWhitespace(value: string): string`
+
+Removes leading/trailing spaces and replaces multiple consecutive spaces with a single space.
+
+#### Parameters:
+
+- `value`: The string to remove whitespace from.
+
+#### Returns:
+
+A new string with whitespace removed.
+
+#### Example:
+
+```typescript
+const input = "   hello    world   ";
+const output = Stringify.removeWhitespace(input);
+console.log(output); // "hello world"
+```
+
+### `reverse(value: string): string`
+
+Reverses the characters of a string.
+
+#### Parameters:
+
+- `value`: The input string to reverse.
+
+#### Returns:
+
+A new string with the characters reversed.
+
+#### Example:
+
+```typescript
+const input = "hello world";
+const output = Stringify.reverse(input);
+console.log(output); // "dlrow olleh"
+```
+
+### `reverseWords(str: string): string`
+
+Reverses the order of words in a string.
+
+#### Parameters
+
+- `str`: The input string to be processed.
+
+#### Returns
+
+A new string with the order of words reversed.
+
+#### Example
+
+```typescript
+const input = "hello world";
+const output = Stringify.reverseWords(input);
+console.log(output); // "world hello"
+```
+
+### `shuffle(str: string): string`
+
+Shuffles the characters of a string.
+
+#### Parameters:
+
+- `str`: The input string to be shuffled.
+
+#### Returns:
+
+A new string with the characters of the input string shuffled.
+
+#### Example:
+
+```typescript
+const input = "hello world";
+const output = Stringify.shuffle(input);
+console.log(output); // Output will be different every time due to randomness
+```
+
+### `contains(str: string, substring: string): boolean`
+
+Returns a boolean indicating whether the string contains a specified substring.
+
+#### Parameters:
+
+- `str`: The input string to search in.
+- `substring`: The substring to search for.
+
+#### Returns:
+
+A boolean indicating whether the string contains the substring. `true` if the substring is found, `false` otherwise.
+
+#### Example:
+
+```typescript
+const input = "Hello, world!";
+const hasComma = Stringify.contains(input, ",");
+console.log(hasComma); // true
+
+const hasExclamation = Stringify.contains(input, "!");
+console.log(hasExclamation); // true
+
+const hasNumbers = Stringify.contains(input, "123");
+console.log(hasNumbers); // false
+```
+
+### `countOccurrences(str: string, substring: string): number`
+
+Returns the number of times a specified substring appears in the string.
+
+#### Parameters:
+
+- `str`: The input string to be searched.
+- `substring`: The substring to count occurrences of.
+
+#### Returns:
+
+The number of times the substring appears in the string.
+
+#### Example:
+
+```typescript
+const input = "hello world";
+const count = Stringify.countOccurrences(input, "l");
+console.log(count); // 3
+```
+
+
+### `slugify(str: string): string`
+
+The `slugify()` function takes a string as input and returns a URL-friendly slug.
+
+#### Parameters
+
+- `str`: A string to convert to a slug.
+
+#### Returns
+
+The slugified string.
+
+#### Example
+
+```typescript
+const str = "This is a string with spaces and special characters!";
+const slug = slugify(str);
+console.log(slug); // Output: "this-is-a-string-with-spaces-and-special-characters"
+```
+
+
+
+
+
+
+
+
+
+<br/>
+<br/>
+
+### URL Encoding Methods
+
+### `encodeQueryString(params: Record<string, any>): string`
 
 Encodes an object of key-value pairs as a URL query string.
 
-### Example
+#### Example
 
 ```jsx
 Stringify.encodeQueryString({ foo: 'bar', baz: 'qux' }); // "foo=bar&baz=qux"
 ```
 
-### Parameters
+#### Parameters
 
-- **`params`**: An object containing key-value pairs to be encoded.
+- `params`: An object containing key-value pairs to be encoded.
 
-### Returns
+#### Returns
 
 - A string containing the encoded key-value pairs as a query string.
 
-### **`decodeQueryString(queryString: string): Record<string, any>`**
+### `decodeQueryString(queryString: string): Record<string, any>`
 
 Decodes a URL query string into an object of key-value pairs.
 
-### Example
+#### Example
 
 ```jsx
 Stringify.decodeQueryString("foo=bar&baz=qux"); // { foo: 'bar', baz: 'qux' }
 ```
 
-### Parameters
+#### Parameters
 
-- **`queryString`**: A string containing the encoded key-value pairs as a query string.
+- `queryString`: A string containing the encoded key-value pairs as a query string.
 
-### Returns
+#### Returns
 
 - An object containing the decoded key-value pairs.
 
-### **`parseUrl(url: string): Record<string, any>`**
+### `parseUrl(url: string): Record<string, any>`
 
 Parses a URL into an object containing its protocol, hostname, port, and pathname, as well as any query parameters.
 
-### Example
+#### Example
 
 ```jsx
 Stringify.parseUrl("https://www.example.com/search?q=example");
 // { protocol: 'https:', hostname: 'www.example.com', port: '', pathname: '/search', q: 'example' }
 ```
 
-### Parameters
+#### Parameters
 
-- **`url`**: The URL to be parsed.
+- `url`: The URL to be parsed.
 
-### Returns
+#### Returns
 
 - An object containing the parsed URL properties.
   <br/>
   <br/>
   <br/>
 
-### **Data Type Conversions**
+### Data Type Conversions
 
-### **`xmlToJson(xml: string): string`**
+### `xmlToJson(xml: string): string`
 
 Converts XML string to valid JSON objects
 
-### Example
+#### Example
 
 ```jsx
 Stringify.xmlToJson("<root><name>Claver</name></root>"); // "{name: 'Claver'}"
 ```
 
-### Parameters
+#### Parameters
 
-- **`xml`**: The XML string to convert to JSON
+- `xml`: The XML string to convert to JSON
 
-### Returns
+#### Returns
 
 - A JSON object converted frm the XML string 
 
 <br />
 <br />
 
-### **`jsonToXml(json: string): string`**
+### `jsonToXml(json: string): string`
 
 Converts JSON objects to valid XML
 
-### Example
+#### Example
 
 ```jsx
 Stringify.jsonToXml({"name": "Claver"}); // <name>Claver</name>
 ```
 
-### Parameters
+#### Parameters
 
-- **`xml`**: The JSON object to convert to XML
+- `xml`: The JSON object to convert to XML
 
-### Returns
+#### Returns
 
 - A JSON object converted frm the XML string
 
 
 ## Options
 
-### 🔨 **JSON Manipulation**
+### 🔨 JSON Manipulation
 
-- ***`toJson`***: Converts a JSON string to a JSON Object
-- ***`toString`***: Converts a JSON object to a string using **`JSON.stringify`**
+- *`toJson`*: Converts a JSON string to a JSON Object
+- *`toString`*: Converts a JSON object to a string using `JSON.stringify`
 
-### **🔐 Encryption and Decryption**
+### 🔐 Encryption and Decryption
 
-Before you can use these methods, please add a **`.env`** file with a **`32 alpha numeric string`** as an **`ENCRYPTION_KEY`**.
+Before you can use these methods, please add a `.env` file with a `32 alpha numeric string` as an `ENCRYPTION_KEY`.
 
-- ***`toEncryptedString`**:* Encrypts and returns an encrypted hash of any string passed to it.
-- ***`toDecryptedString`**:* Decrypts the encrypted string and returns the original text.
-- ***`toDecryptedJSON`**:* Decrypts an encrypted stringified JSON object and returns the original JSON object.
+- *`toEncryptedString`:* Encrypts and returns an encrypted hash of any string passed to it.
+- *`toDecryptedString`:* Decrypts the encrypted string and returns the original text.
+- *`toDecryptedJSON`:* Decrypts an encrypted stringified JSON object and returns the original JSON object.
 
-### 🅰️ **Case Conversions**
+### 🅰️ Case Conversions
 
-- ***`toCamelCase`**:* Converts a string to camel case.
-- ***`toSnakeCase`**:* Converts a string to snake case.
-- ***`toKebabCase`**:* Converts a string to kebab case.
-- ***`toSentenceCase`**:* Converts a string to sentence case.
-- ***`toTitleCase`**:* Converts a string to title case.
-- ***`toUpperCase`**:* Converts a string to uppercase.
-- ***`toLowerCase`**:* Converts a string to lowercase.
+- *`toCamelCase`:* Converts a string to camel case.
+- *`toSnakeCase`:* Converts a string to snake case.
+- *`toKebabCase`:* Converts a string to kebab case.
+- *`toSentenceCase`:* Converts a string to sentence case.
+- *`toTitleCase`:* Converts a string to title case.
+- *`toUpperCase`:* Converts a string to uppercase.
+- *`toLowerCase`:* Converts a string to lowercase.
 
-### 🔗 **URL Encoding**
+### 🔗 URL Encoding
 
-- ***`encodeQueryString`**:* Encodes a query string.
-- ***`decodeQueryString`**:* Decodes a query string.
-- ***`parseUrl`**:* Parses a URL.
+- *`encodeQueryString`:* Encodes a query string.
+- *`decodeQueryString`:* Decodes a query string.
+- *`parseUrl`:* Parses a URL.
 
-### ⛓️ **String Formatting**
+### ⛓️ String Formatting
 
-- ***`formatString`**:* Formats a string with placeholders and values.
-- ***`padLeft`**:* Pads a string with characters on the left.
-- ***`padRight`**:* Pads a string with characters on the right.
-- ***`truncate`**:* Truncates a string to a specified length.
+- *`formatString`:* Formats a string with placeholders and values.
+- *`padLeft`:* Pads a string with characters on the left.
+- *`padRight`:* Pads a string with characters on the right.
+- *`truncate`:* Truncates a string to a specified length.

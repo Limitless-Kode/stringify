@@ -341,6 +341,326 @@ export default class Stringify extends Ncrypt {
     }
   }
 
+  /**
+   * Replaces the first occurrence of a specified substring with a replacement string.
+   * @param str
+   * @param oldSubstring - The substring to replace.
+   * @param newSubstring - The replacement substring.
+   * @returns The modified string with the first occurrence of the old substring replaced.
+   */
+  static replace(str: string, oldSubstring: string, newSubstring: string): string {
+    if (oldSubstring === "") {
+      return str;
+    }
+    return str.replace(new RegExp(oldSubstring, "g"), newSubstring);
+  }
+
+
+
+  /**
+   * Replaces all occurrences of a specified substring with a replacement string.
+   * @param str
+   * @param oldSubstring - The substring to replace.
+   * @param newSubstring - The replacement substring.
+   * @returns The modified string with all occurrences of the old substring replaced.
+   */
+  static replaceAll(str: string, oldSubstring: string, newSubstring: string): string {
+    // Use a regular expression to match all occurrences of the old substring.
+    const regex = new RegExp(oldSubstring, 'g');
+    return str.replace(regex, newSubstring);
+  }
+
+  /**
+   * Removes leading/trailing spaces and replaces multiple consecutive spaces with a single space.
+   *
+   * @param {string} value - The string to remove whitespace from.
+   * @returns {string} A new string with whitespace removed.
+   */
+  static removeWhitespace(value: string): string {
+    return value.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " ");
+  }
+
+  /**
+   * Reverses the characters of a string.
+   * @param value - The input string to reverse.
+   * @returns The reversed string.
+   */
+  static reverse(value: string): string {
+    return value.split("").reverse().join("");
+  }
+
+  /**
+   * Reverses the order of words in the string.
+   * @returns The string with the order of words reversed.
+   */
+  static reverseWords(str: string): string {
+    // Split the string into an array of words, reverse the order, and join back into a string.
+    const words = str.split(/\s+/);
+    return words.reverse().join(' ');
+  }
+
+  /**
+   * Shuffles the characters of a string.
+   * @param str - The input string to shuffle.
+   * @returns The shuffled string.
+   */
+  static shuffle(str: string): string {
+    const arr = str.split("");
+
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+
+      // Swap the current element with the random element.
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+
+    return arr.join("");
+  }
+
+  /**
+   * Returns a boolean indicating whether the string contains a specified substring.
+   * @param str
+   * @param substring - The substring to search for.
+   * @returns `true` if the string contains the substring, otherwise `false`.
+   */
+  static contains(str: string, substring: string): boolean {
+    return str.includes(substring);
+  }
+
+  /**
+   * Returns the number of times a specified substring appears in the string.
+   * @param str
+   * @param substring - The substring to count occurrences of.
+   * @returns The number of times the substring appears in the string.
+   */
+  static countOccurrences(str: string, substring: string): number {
+    // Use a regular expression to match all occurrences of the substring.
+    const regex = new RegExp(substring, 'g');
+    const matches = str.match(regex);
+
+    // Return the number of matches.
+    return matches ? matches.length : 0;
+  }
+
+  /**
+   * Converts the string to a URL-friendly slug.
+   * @param str
+   * @returns The slugified string.
+   */
+  static slugify(str: string): string {
+    return str
+        .toLowerCase() // Convert to lowercase
+        .replace(/\s+/g, '-') // Replace one or more spaces with hyphens
+        .replace(/_/g, '-') // Replace underscores with hyphens
+        .replace(/[^-_\w]+/g, '-') // Replace any remaining non-word, non-space, and non-hyphen characters with a hyphen
+        .replace(/[^\w\s-]/g, '') // Remove non-word, non-space, and non-hyphen characters
+        .replace(/^-+|-+$/g, ''); // Remove leading and trailing hyphens
+  }
+
+
+
+  /**
+   * Returns a boolean indicating whether the string contains any of the specified substrings.
+   * @param str
+   * @param substrings - An array of substrings to search for.
+   * @returns True if the string contains any of the specified substrings; otherwise false.
+   */
+  static containsAny(str: string, substrings: string[]): boolean {
+    return substrings.some(substring => str.includes(substring));
+  }
+
+  /**
+   * Returns a boolean indicating whether the string starts with any of the specified substrings.
+   * @param str
+   * @param substrings - An array of substrings to search for.
+   * @returns True if the string starts with any of the specified substrings; otherwise false.
+   */
+  static startsWithAny(str: string, substrings: string[]): boolean {
+    return substrings.some(substring => str.startsWith(substring));
+  }
+
+  /**
+   * Returns a boolean indicating whether the string ends with any of the specified substrings.
+   * @param str
+   * @param substrings - An array of substrings to search for.
+   * @returns True if the string ends with any of the specified substrings; otherwise false.
+   */
+  static endsWithAny(str: string, substrings: string[]): boolean {
+    return substrings.some(substring => str.endsWith(substring));
+  }
+
+  /**
+   * Checks if a string is a palindrome (reads the same forwards and backwards).
+   *
+   * @param {string} value - The string to check.
+   * @returns {boolean} Whether the string is a palindrome.
+   */
+  static isPalindrome(value: string): boolean {
+    // Remove all non-alphanumeric characters and convert to lowercase
+    const alphanumericValue = value.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+    // Check if the alphanumericValue reads the same forwards and backwards
+    return alphanumericValue === alphanumericValue.split("").reverse().join("");
+  }
+
+  /**
+   * Checks if a string contains only numeric characters.
+   *
+   * @param {string} value - The string to check.
+   * @returns {boolean} Whether the string contains only numeric characters.
+   */
+  static isNumeric(value: string): boolean {
+    // Check if the value contains only digits
+    return /^\d+$/.test(value);
+  }
+
+  /**
+   * Determines whether a string is a valid email address.
+   *
+   * @param {string} value - The string to check.
+   * @returns {boolean} `true` if the string is a valid email address, `false` otherwise.
+   */
+  static isEmail(value: string): boolean {
+    // Regular expression for checking email address format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+  }
+
+  /**
+   * Determines whether a string is a valid IPv4 address.
+   *
+   * @param {string} value - The string to check.
+   * @returns {boolean} `true` if the string is a valid IPv4 address, `false` otherwise.
+   */
+  static isIpv4Address(value: string): boolean {
+    // Regular expression for checking IPv4 address format
+    const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
+    if (!ipv4Regex.test(value)) {
+      return false;
+    }
+    // Split the address into its components and check that each component is within the valid range (0-255)
+    const components = value.split(".");
+    for (const component of components) {
+      const num = parseInt(component);
+      if (isNaN(num) || num < 0 || num > 255) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Determines whether a string is a valid IPv6 address.
+   *
+   * @param {string} value - The string to check.
+   * @returns {boolean} `true` if the string is a valid IPv6 address, `false` otherwise.
+   */
+  static isIpv6Address(value: string): boolean {
+    // Regular expression for checking IPv6 address format
+    const ipv6Regex = /^([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}$/;
+    return ipv6Regex.test(value);
+  }
+
+
+  /**
+   * Strips HTML tags from a string.
+   *
+   * @param {string} value - The string to strip tags from.
+   * @returns {string} A new string with all HTML tags removed.
+   */
+  static stripTags(value: string): string {
+    // Regular expression for matching HTML tags
+    const tagRegex = /<\/?[^>]+>/gi;
+    return value.replace(tagRegex, "");
+  }
+
+  /**
+   * Encodes HTML entities in a string.
+   *
+   * @param {string} value - The string to encode.
+   * @returns {string} A new string with all HTML entities encoded.
+   */
+  /**
+   * Encodes HTML entities in a string.
+   * @param value - The string to encode.
+   * @returns The encoded string.
+   */
+  static encodeHtmlEntities(value: string): string {
+    const entityMap: any = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&apos;',
+      '\u00A0': '&nbsp;',
+      '’': '&rsquo;',
+      '‘': '&lsquo;',
+      '”': '&rdquo;',
+      '“': '&ldquo;',
+      '©': '&copy;',
+      '®': '&reg;',
+      '™': '&trade;',
+      '€': '&euro;',
+      '£': '&pound;',
+      '¥': '&yen;',
+    };
+
+    return value.replace(/[&<>"'\u00A0’‘”“©®™€£¥]/g, match => entityMap[match]);
+  }
+
+  /**
+   * Decodes HTML entities in a string.
+   * @param value - The string to decode.
+   * @returns The decoded string.
+   */
+  static decodeHtmlEntities(value: string): string {
+    const entityRegex = /&([a-z]+|#\d+);/gi;
+    const entityMap: any = {
+      amp: '&',
+      lt: '<',
+      gt: '>',
+      quot: '"',
+      apos: "'",
+      nbsp: '\u00A0',
+      rsquo: '’',
+      lsquo: '‘',
+      rdquo: '”',
+      ldquo: '“',
+      copy: '©',
+      reg: '®',
+      trade: '™',
+      euro: '€',
+      pound: '£',
+      yen: '¥',
+    };
+
+    return value.replace(entityRegex, (match, entity) => {
+      const decoded = entityMap[entity.toLowerCase()];
+      if (decoded) {
+        return decoded;
+      }
+
+      if (entity.startsWith('#x')) {
+        const codePoint = parseInt(entity.substring(2), 16);
+        return isNaN(codePoint) ? match : String.fromCodePoint(codePoint);
+      }
+
+      if (entity.startsWith('#')) {
+        const codePoint = parseInt(entity.substring(1), 10);
+        return isNaN(codePoint) ? match : String.fromCodePoint(codePoint);
+      }
+
+      return match;
+    });
+  }
+
+
+
+
+
+
+
+
   private static domParser: any = typeof window !== 'undefined' ? window.DOMParser : MockDOMParser;
 
   private static buildXml(data: any): string {
