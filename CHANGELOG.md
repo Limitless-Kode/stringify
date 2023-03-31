@@ -1,5 +1,17 @@
 
 
+## [1.3.0](https://github.com/limitless-kode/stringify/compare/v1.2.7...v1.3.0) (2023-03-31)
+
+
+### Features
+
+* added new several methods ([a539979](https://github.com/limitless-kode/stringify/commit/a539979602671d1f39d6b295d414044eed04cd0d))
+
+
+### Bug Fixes
+
+* build files generated ([29c9087](https://github.com/limitless-kode/stringify/commit/29c908723e9008674ea71c299df62f2e542f4eae))
+
 ## [1.2.7](https://github.com/limitless-kode/stringify/compare/v1.2.6...v1.2.7) (2023-03-27)
 
 ## [1.2.6](https://github.com/limitless-kode/stringify/compare/v1.2.5...v1.2.6) (2023-03-27)
