@@ -145,6 +145,202 @@ describe('Stringify', () => {
             expect(result).toBe('abc ');
         });
     });
+    describe('Stringify.replace', () => {
+        it('should replace all occurrences of a substring with a new substring', () => {
+            const input = 'hello world';
+            const expectedOutput = 'hello universe';
+            const actualOutput = stringify_1.default.replace(input, 'world', 'universe');
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should replace only the first occurrence of a substring with a new substring', () => {
+            const input = 'hello world';
+            const expectedOutput = 'hello universe';
+            const actualOutput = stringify_1.default.replace(input, 'world', 'universe');
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should not modify the original string', () => {
+            const input = 'hello world';
+            stringify_1.default.replace(input, 'world', 'universe');
+            expect(input).toEqual('hello world');
+        });
+        it('should handle empty strings as input', () => {
+            const input = '';
+            const expectedOutput = '';
+            const actualOutput = stringify_1.default.replace(input, 'a', 'b');
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should handle empty substring parameters', () => {
+            const input = 'hello world';
+            const expectedOutput = 'hello world';
+            const actualOutput = stringify_1.default.replace(input, '', 'b');
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+    });
+    describe('Stringify.replaceAll', () => {
+        describe('when given an empty string', () => {
+            it('should return an empty string', () => {
+                const input = '';
+                const expectedOutput = '';
+                const actualOutput = stringify_1.default.replaceAll(input, 'a', 'b');
+                expect(actualOutput).toEqual(expectedOutput);
+            });
+        });
+        describe('when given a string with no occurrences of the old substring', () => {
+            it('should return the original string', () => {
+                const input = 'hello world';
+                const expectedOutput = 'hello world';
+                const actualOutput = stringify_1.default.replaceAll(input, 'a', 'b');
+                expect(actualOutput).toEqual(expectedOutput);
+            });
+        });
+        describe('when given a string with one occurrence of the old substring', () => {
+            it('should replace the old substring with the new substring', () => {
+                const input = 'hello world';
+                const expectedOutput = 'hello friend';
+                const actualOutput = stringify_1.default.replaceAll(input, 'world', 'friend');
+                expect(actualOutput).toEqual(expectedOutput);
+            });
+        });
+        describe('when given a string with multiple occurrences of the old substring', () => {
+            it('should replace all occurrences of the old substring with the new substring', () => {
+                const input = 'hello galaxy, hello universe';
+                const expectedOutput = 'hi galaxy, hi universe';
+                const actualOutput = stringify_1.default.replaceAll(input, 'hello', 'hi');
+                expect(actualOutput).toEqual(expectedOutput);
+            });
+        });
+        describe('when given empty old and new substrings', () => {
+            it('should return the original string', () => {
+                const input = 'hello world';
+                const expectedOutput = 'hello world';
+                const actualOutput = stringify_1.default.replaceAll(input, '', '');
+                expect(actualOutput).toEqual(expectedOutput);
+            });
+        });
+    });
+    describe('Stringify.removeWhitespace', () => {
+        it('should remove leading/trailing spaces and replace consecutive spaces with a single space', () => {
+            const input = '  hello   world  ';
+            const expectedOutput = 'hello world';
+            const actualOutput = stringify_1.default.removeWhitespace(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should handle an empty input string', () => {
+            const input = '';
+            const expectedOutput = '';
+            const actualOutput = stringify_1.default.removeWhitespace(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should handle a string with no whitespace', () => {
+            const input = 'helloworld';
+            const expectedOutput = 'helloworld';
+            const actualOutput = stringify_1.default.removeWhitespace(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should handle a string with only whitespace', () => {
+            const input = '    ';
+            const expectedOutput = '';
+            const actualOutput = stringify_1.default.removeWhitespace(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+    });
+    describe("Stringify.reverse", () => {
+        it('should reverse a string', () => {
+            const input = 'hello world';
+            const expectedOutput = 'dlrow olleh';
+            const actualOutput = stringify_1.default.reverse(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should reverse an empty string', () => {
+            const input = '';
+            const expectedOutput = '';
+            const actualOutput = stringify_1.default.reverse(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should reverse a string with one character', () => {
+            const input = 'a';
+            const expectedOutput = 'a';
+            const actualOutput = stringify_1.default.reverse(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+    });
+    describe('Stringify.reverseWords', () => {
+        it('should reverse the order of words in a string with three words', () => {
+            const input = 'hello world goodbye';
+            const expectedOutput = 'goodbye world hello';
+            const actualOutput = stringify_1.default.reverseWords(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should reverse the order of words in a string with two words', () => {
+            const input = 'hello world';
+            const expectedOutput = 'world hello';
+            const actualOutput = stringify_1.default.reverseWords(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should reverse the order of words in a string with one word', () => {
+            const input = 'hello';
+            const expectedOutput = 'hello';
+            const actualOutput = stringify_1.default.reverseWords(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+        it('should return an empty string when given an empty string', () => {
+            const input = '';
+            const expectedOutput = '';
+            const actualOutput = stringify_1.default.reverseWords(input);
+            expect(actualOutput).toEqual(expectedOutput);
+        });
+    });
+    describe('Stringify.shuffle', () => {
+        it('returns a shuffled string with same length', () => {
+            const input = 'hello world';
+            const output = stringify_1.default.shuffle(input);
+            expect(output.length).toEqual(input.length);
+            expect(output).not.toEqual(input);
+        });
+        it('returns a shuffled string with same characters', () => {
+            const input = 'hello world';
+            const output = stringify_1.default.shuffle(input);
+            const inputChars = input.split('').sort().join('');
+            const outputChars = output.split('').sort().join('');
+            expect(outputChars).toEqual(inputChars);
+        });
+    });
+    describe("Stringify.contains", () => {
+        it("returns true if the string contains the substring", () => {
+            const input = "Hello, world!";
+            const result = stringify_1.default.contains(input, ",");
+            expect(result).toBe(true);
+        });
+        it("returns false if the string does not contain the substring", () => {
+            const input = "Hello, world!";
+            const result = stringify_1.default.contains(input, "123");
+            expect(result).toBe(false);
+        });
+    });
+    describe("Stringify.countOccurrences", () => {
+        it("should return the correct number of occurrences when substring appears multiple times", () => {
+            const input = "hello world";
+            const count = stringify_1.default.countOccurrences(input, "l");
+            expect(count).toBe(3);
+        });
+        it("should return 0 when substring does not appear in string", () => {
+            const input = "hello world";
+            const count = stringify_1.default.countOccurrences(input, "z");
+            expect(count).toBe(0);
+        });
+    });
+    describe('Stringify.slugify', () => {
+        it('should return a URL-friendly slugified string', () => {
+            expect(stringify_1.default.slugify('Hello World')).toBe('hello-world');
+            expect(stringify_1.default.slugify('Test slugify function')).toBe('test-slugify-function');
+            expect(stringify_1.default.slugify('Testing123')).toBe('testing123');
+            expect(stringify_1.default.slugify('  Testing Spaces  ')).toBe('testing-spaces');
+            expect(stringify_1.default.slugify('Testing_Underscores')).toBe('testing-underscores');
+            expect(stringify_1.default.slugify('Testing+Special-Characters!')).toBe('testing-special-characters');
+            expect(stringify_1.default.slugify('Testing Leading and Trailing Hyphens - ')).toBe('testing-leading-and-trailing-hyphens');
+            expect(stringify_1.default.slugify('  Testing Leading and Trailing Spaces  ')).toBe('testing-leading-and-trailing-spaces');
+        });
+    });
     describe('jsonToXml and xmlToJson', () => {
         describe('jsonToXml()', () => {
             it('should correctly convert JSON to XML', () => {

@@ -192,6 +192,147 @@ export default class Stringify extends Ncrypt {
      * @returns {string} The truncated string.
      */
     static truncate(str: string, maxLength: number, suffix?: string): string;
+    /**
+     * Replaces the first occurrence of a specified substring with a replacement string.
+     * @param str
+     * @param oldSubstring - The substring to replace.
+     * @param newSubstring - The replacement substring.
+     * @returns The modified string with the first occurrence of the old substring replaced.
+     */
+    static replace(str: string, oldSubstring: string, newSubstring: string): string;
+    /**
+     * Replaces all occurrences of a specified substring with a replacement string.
+     * @param str
+     * @param oldSubstring - The substring to replace.
+     * @param newSubstring - The replacement substring.
+     * @returns The modified string with all occurrences of the old substring replaced.
+     */
+    static replaceAll(str: string, oldSubstring: string, newSubstring: string): string;
+    /**
+     * Removes leading/trailing spaces and replaces multiple consecutive spaces with a single space.
+     *
+     * @param {string} value - The string to remove whitespace from.
+     * @returns {string} A new string with whitespace removed.
+     */
+    static removeWhitespace(value: string): string;
+    /**
+     * Reverses the characters of a string.
+     * @param value - The input string to reverse.
+     * @returns The reversed string.
+     */
+    static reverse(value: string): string;
+    /**
+     * Reverses the order of words in the string.
+     * @returns The string with the order of words reversed.
+     */
+    static reverseWords(str: string): string;
+    /**
+     * Shuffles the characters of a string.
+     * @param str - The input string to shuffle.
+     * @returns The shuffled string.
+     */
+    static shuffle(str: string): string;
+    /**
+     * Returns a boolean indicating whether the string contains a specified substring.
+     * @param str
+     * @param substring - The substring to search for.
+     * @returns `true` if the string contains the substring, otherwise `false`.
+     */
+    static contains(str: string, substring: string): boolean;
+    /**
+     * Returns the number of times a specified substring appears in the string.
+     * @param str
+     * @param substring - The substring to count occurrences of.
+     * @returns The number of times the substring appears in the string.
+     */
+    static countOccurrences(str: string, substring: string): number;
+    /**
+     * Converts the string to a URL-friendly slug.
+     * @param str
+     * @returns The slugified string.
+     */
+    static slugify(str: string): string;
+    /**
+     * Returns a boolean indicating whether the string contains any of the specified substrings.
+     * @param str
+     * @param substrings - An array of substrings to search for.
+     * @returns True if the string contains any of the specified substrings; otherwise false.
+     */
+    static containsAny(str: string, substrings: string[]): boolean;
+    /**
+     * Returns a boolean indicating whether the string starts with any of the specified substrings.
+     * @param str
+     * @param substrings - An array of substrings to search for.
+     * @returns True if the string starts with any of the specified substrings; otherwise false.
+     */
+    static startsWithAny(str: string, substrings: string[]): boolean;
+    /**
+     * Returns a boolean indicating whether the string ends with any of the specified substrings.
+     * @param str
+     * @param substrings - An array of substrings to search for.
+     * @returns True if the string ends with any of the specified substrings; otherwise false.
+     */
+    static endsWithAny(str: string, substrings: string[]): boolean;
+    /**
+     * Checks if a string is a palindrome (reads the same forwards and backwards).
+     *
+     * @param {string} value - The string to check.
+     * @returns {boolean} Whether the string is a palindrome.
+     */
+    static isPalindrome(value: string): boolean;
+    /**
+     * Checks if a string contains only numeric characters.
+     *
+     * @param {string} value - The string to check.
+     * @returns {boolean} Whether the string contains only numeric characters.
+     */
+    static isNumeric(value: string): boolean;
+    /**
+     * Determines whether a string is a valid email address.
+     *
+     * @param {string} value - The string to check.
+     * @returns {boolean} `true` if the string is a valid email address, `false` otherwise.
+     */
+    static isEmail(value: string): boolean;
+    /**
+     * Determines whether a string is a valid IPv4 address.
+     *
+     * @param {string} value - The string to check.
+     * @returns {boolean} `true` if the string is a valid IPv4 address, `false` otherwise.
+     */
+    static isIpv4Address(value: string): boolean;
+    /**
+     * Determines whether a string is a valid IPv6 address.
+     *
+     * @param {string} value - The string to check.
+     * @returns {boolean} `true` if the string is a valid IPv6 address, `false` otherwise.
+     */
+    static isIpv6Address(value: string): boolean;
+    /**
+     * Strips HTML tags from a string.
+     *
+     * @param {string} value - The string to strip tags from.
+     * @returns {string} A new string with all HTML tags removed.
+     */
+    static stripTags(value: string): string;
+    /**
+     * Encodes HTML entities in a string.
+     *
+     * @param {string} value - The string to encode.
+     * @returns {string} A new string with all HTML entities encoded.
+     */
+    /**
+     * Encodes HTML entities in a string.
+     * @param value - The string to encode.
+     * @returns The encoded string.
+     */
+    static encodeHtmlEntities(value: string): string;
+    /**
+     * Decodes HTML entities in a string.
+     * @param value - The string to decode.
+     * @returns The decoded string.
+     */
+    static decodeHtmlEntities(value: string): string;
     private static domParser;
     private static buildXml;
     private static buildJson2;
