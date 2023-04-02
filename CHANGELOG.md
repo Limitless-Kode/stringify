@@ -1,5 +1,12 @@
 
 
+## [1.3.1](https://github.com/limitless-kode/stringify/compare/v1.3.0...v1.3.1) (2023-04-02)
+
+
+### Bug Fixes
+
+* added license ([ddb3f98](https://github.com/limitless-kode/stringify/commit/ddb3f98f1add04da86f631a04814d1f94a2baea2))
+
 ## [1.3.0](https://github.com/limitless-kode/stringify/compare/v1.2.7...v1.3.0) (2023-03-31)
 
 
